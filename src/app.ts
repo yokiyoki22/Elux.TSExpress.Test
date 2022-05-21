@@ -6,14 +6,18 @@ import UsersRoute from './web/routes/users.route';
 import { UsersController } from './web/controllers/users.controller';
 import { UsersRepository } from './infrastructure/repositories/users.repository';
 import { UsersService } from './domain/services/users.service';
+import { UserValidator } from './domain/validators/users.validator';
 
 const app = express();
+
+app.use(express.json());
 
 const config: Config = LoadConfig();
 
 
 const usersRepository = new UsersRepository();
-const usersService = new UsersService(usersRepository);
+const userValidator = new UserValidator();
+const usersService = new UsersService(usersRepository, userValidator);
 const usersController = new UsersController(usersService);
 
 

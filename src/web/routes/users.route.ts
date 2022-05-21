@@ -8,5 +8,7 @@ export default function UsersRoute(
 
     router.get('/', (req, res) => usersController.GetAll(req, res));
 
+    router.put('/', (req, res) => usersController.Create(req, res));
+
     return router;
 }
