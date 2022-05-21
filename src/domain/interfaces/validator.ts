@@ -1,6 +1,6 @@
 
 export interface IValidator<T>{
-    validate(item: T) : ValidationResult
+    validate(item: T) : Promise<ValidationResult>
 }
 
 export type ValidationResult = {

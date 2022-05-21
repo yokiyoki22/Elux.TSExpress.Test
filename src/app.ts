@@ -16,7 +16,7 @@ const config: Config = LoadConfig();
 
 
 const usersRepository = new UsersRepository();
-const userValidator = new UserValidator();
+const userValidator = new UserValidator(usersRepository);
 const usersService = new UsersService(usersRepository, userValidator);
 const usersController = new UsersController(usersService);
 

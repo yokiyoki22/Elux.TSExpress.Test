@@ -12,7 +12,7 @@ export class UsersService implements IUsersService{
         this._usersValidator = usersValidator;
     }
     async insertUser(user: UserCommand): Promise<User> {
-        const validation = this._usersValidator.validate(user);
+        const validation = await this._usersValidator.validate(user);
 
         if(!validation.isValid){
             throw new ValidationError(validation.error as string);
