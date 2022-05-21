@@ -6,7 +6,7 @@ export default function UsersRoute(
 ){
     const router = Router();
 
-    router.get('/', usersController.GetAll);
+    router.get('/', (req, res) => usersController.GetAll(req, res));
 
     return router;
 }
