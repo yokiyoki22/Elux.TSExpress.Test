@@ -134,3 +134,6 @@ build/
 
 # vscode
 .vscode/*
+
+# vs 2022
+.vs/*
