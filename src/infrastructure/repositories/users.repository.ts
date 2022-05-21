@@ -12,6 +12,15 @@ export class UsersRepository implements IUsersRepository{
             email: "mario.rossi@test.it"
         });
     }
+    async getUserByEmail(email: string): Promise<User | undefined> {
+        const found = this._users.filter(x => x.email == email);
+
+        if(found.length > 1) throw new Error("Found more than one user with the same email.");
+
+        if(found.length === 0) return undefined;
+
+        return found[0];
+    }
     async insertUser(user: UserCommand): Promise<User> {
         const newUser: User = {
             fullName: user.fullName,
