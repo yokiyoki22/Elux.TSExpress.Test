@@ -23,9 +23,9 @@ export class UsersRepository implements IUsersRepository{
     }
     async insertUser(user: UserCommand): Promise<User> {
         const newUser: User = {
+            id: crypto.randomUUID(),
             fullName: user.fullName,
             email: user.email,
-            id: crypto.randomUUID()
         };
 
         this._users.push(newUser);
