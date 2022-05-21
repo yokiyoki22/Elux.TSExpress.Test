@@ -1,6 +1,5 @@
 
 import express, { application } from 'express';
-import usersRouter from "./web/routes/users.route"
 import { LoadConfig, Config } from './domain/services/config.service';
 import UsersRoute from './web/routes/users.route';
 import { UsersController } from './web/controllers/users.controller';
