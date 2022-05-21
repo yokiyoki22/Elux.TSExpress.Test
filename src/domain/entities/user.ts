@@ -1,5 +1,9 @@
 export interface User{
-    id?: string,
+    id: string,
+    fullName: string,
+    email: string
+}
+export interface UserCommand{
     fullName: string,
     email: string
 }
