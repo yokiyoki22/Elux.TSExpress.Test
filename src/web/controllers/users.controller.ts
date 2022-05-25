@@ -1,11 +1,13 @@
 import {Response, Request} from 'express';
+import { inject, injectable } from 'tsyringe';
 import { UserCommand } from '../../domain/entities/user';
 import { IUsersService } from '../../domain/interfaces/services/users.serviceif';
 import { ValidationError } from '../../domain/interfaces/validator';
 
+@injectable()
 export class UsersController{
     private _usersService: IUsersService;
-    constructor(usersService: IUsersService){
+    constructor(@inject("IUsersService") usersService: IUsersService){
         this._usersService = usersService;
     }
 

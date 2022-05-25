@@ -1,13 +1,18 @@
+import { inject, injectable } from "tsyringe";
 import { User, UserCommand } from "../entities/user";
 import { IUsersRepository } from "../interfaces/repositories/users.repositoryif";
 import { IUsersService } from "../interfaces/services/users.serviceif";
 import { IValidator, ValidationError } from "../interfaces/validator";
 
+@injectable()
 export class UsersService implements IUsersService{
     private _usersRepo: IUsersRepository;
     private _usersValidator: IValidator<UserCommand>
 
-    constructor(usersRepo: IUsersRepository, usersValidator: IValidator<UserCommand>){
+    constructor(
+        @inject("IUsersRepository") usersRepo: IUsersRepository, 
+        @inject("IValidator<UserCommand>") usersValidator: IValidator<UserCommand>
+        ){
         this._usersRepo = usersRepo;
         this._usersValidator = usersValidator;
     }
