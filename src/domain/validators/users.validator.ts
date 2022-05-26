@@ -23,10 +23,10 @@ export class UserValidator implements IValidator<UserCommand>{
         if(item.email === undefined){
             errors.push('Missing email.');
         }
-        if(item.email !== undefined && !emailRegexp.test(item.email)){
+        if(item.email && !emailRegexp.test(item.email)){
             errors.push('Invalid email format.');
         }
-        if((await this._repo.getUserByEmail(item.email)) !== undefined){
+        if(item.email && (await this._repo.getUserByEmail(item.email))){
             errors.push('Email already in use.');
         }
         
