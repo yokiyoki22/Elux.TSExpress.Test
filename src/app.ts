@@ -7,6 +7,7 @@ import { UsersController } from './web/controllers/users.controller';
 import { UsersService } from './domain/services/users.service';
 import { UserValidator } from './domain/validators/users.validator';
 import { container } from 'tsyringe';
+import { authorize } from "./web/authorization";
 
 const app = express();
 
@@ -24,6 +25,7 @@ container.register("IValidator<UserCommand>", {
     useClass: UserValidator
 });
 
+app.use(authorize);
 
 const usersController = container.resolve(UsersController);
 
