@@ -1,42 +1,26 @@
 import dotenv from 'dotenv'
 
-export function LoadConfig(){
-    dotenv.config();
+dotenv.config();
+export const Port = process.env.PORT;
+export const ApiKey = process.env.API_KEY;
+export const ConnectionString = process.env.CONNECTION_STRING;
 
-    const port = process.env.PORT;
-    const apiKey = process.env.API_KEY;
-    const connectionString = process.env.CONNECTION_STRING;
+export function CheckConfig(){
+    // console.log(process.env)
 
-    console.log(process.env)
-
-    if(port === undefined){
+    if(Port === undefined){
         console.log("Invalid configuration.");
         console.log("Make sure to specify PORT in your environment variables.");
         process.exit();
     }
-    if(apiKey === undefined){
+    if(ApiKey === undefined){
         console.log("Invalid configuration.");
         console.log("Make sure to specify API_KEY in your environment variables.");
         process.exit();
     }
-    if(connectionString === undefined){
+    if(ConnectionString === undefined){
         console.log("Invalid configuration.");
         console.log("Make sure to specify CONNECTION_STRING in your environment variables.");
         process.exit();
     }
-    else{
-        const config: Config = {
-            port: +port,
-            apiKey: apiKey,
-            connectionString: connectionString
-        }
-
-        return config;
-    }
-}
-
-export type Config = {
-    port: number,
-    apiKey: string,
-    connectionString: string
 }
